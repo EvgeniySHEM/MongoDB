@@ -2,6 +2,7 @@
 Команды :
 
 Работа с MongoDB:
+
 mongod - запустить базу данных (mongod --config /usr/local/etc/mongod.conf для Mac OS)
 
 mongosh - запустить MongoDB shell из терминала
@@ -13,6 +14,7 @@ cls - очистить MongoDB shell
 version() - посмотреть версию MongoDB
 
 Работа с БД:
+
 show dbs - посмотреть список доступных баз
 
 show users - посмотреть список доступных пользователей
@@ -26,6 +28,7 @@ db.hostInfo() - посмотреть информацию о сервере
 db.dropDatabase() - удалить базу данных
 
 Работа с коллекцией:
+
 db.getCollectionNames() - посмотреть список доступных коллекций (в виде массива)
 
 db.movies.countDocuments() - посмотреть колличество документов в коллекции
@@ -49,6 +52,7 @@ db.movies.drop() - удалить коллекцию "movies"
 db.movies.distinct("year") - посмотреть все уникальные данные поля "year"
 
 Поиск:
+
 db.movies.find() - найти все фильмы коллекции
 
 db.movies.find().pretty() - найти все фильмы коллекции и вывести в удобном для чтения формате
@@ -88,6 +92,7 @@ db.movies.find({ genres: { $all: ["drama", "crime"] } }) - найти фильм
 db.movies.find({ "reviews.name": "Jack" }) - найти фильм с полем "reviews" в котором ИМЯ ревьювера (поле "name") - "Jack"
 
 Добавление:
+
 db.movies.insertOne({ name: "Yauhen" }) - добавить один документ в коллекцию "movies"
 
 db.names.insertMany([{name: "Yauhen"}, {name: "Max"}]) - добавить несколько документов в коллекцию "names"
@@ -95,21 +100,25 @@ db.names.insertMany([{name: "Yauhen"}, {name: "Max"}]) - добавить нес
 db.movies.replaceOne({ id: ObjectId("629249ce4dc394dae55c7489") }, { title: "Alien" }) - полностью заменить найденный по "id" фильм на новый с полем "title" равным "Alien"
 
 Сортировка:
+
 db.movies.find().sort({ rating: -1 }) - сортировать фильмы по убыванию рейтига
 
 db.movies.find().sort({ title: 1 }) - сортировать фильмы по заголовку в алфавитном порядке
 
 Ограничение:
+
 db.movies.find({ director: "Quentin Tarantino" }).skip(1) - найти фильм по полю "director" и пропустить первый найденный фильм
 
 db.movies.find().limit(5) - найти найти все фильмы, но вернуть ТОЛЬКО 5 первых фильмов коллекции
 
 Удаление:
+
 db.movies.deleteOne({ _id: ObjectId("1") }) - удалить фильм по переданному "id"
 
 db.movies.deleteMany({ director: "Guy Ritchie" }) - удалить все фильмы режиссёра "Guy Ritchie"
 
 Обновление:
+
 db.movies.updateOne({ _id: ObjectId('1') }, { $set: { rating: 10, year: 1995 } }) - обновить фильм с переданным id, обновляются поля "rating" И "year"
 
 db.movies.updateMany({ director: "Quentin Tarantino" }, { $set: { rating: 10 } }) - обновить фильм режиссёра "Quentin Tarantino", обновляется поле "rating"
@@ -125,6 +134,7 @@ db.movies.updateOne({ _id: ObjectId('1') }, { $push: { genres: "drama" } }) - о
 db.movies.updateOne({ _id: ObjectId('1') }, { $push: { genres: { $each: ["test1", "test2"] } } }) - обновить фильм с переданным id, в массива "genres" будут добавлены элементы "test1", "test2"
 
 Возврат проекции:
+
 db.movies.find({ director: "Quentin Tarantino" }, { title: 1, director: 1 }) - найти фильмы по полю "director" и вернуть данные ТОЛЬКО с полями "title" и "director"
 
 db.movies.find({}, { title: 1, director: 1 }) - найти все фильмы и вернуть ТОЛЬКО с полями "title" и "director"
