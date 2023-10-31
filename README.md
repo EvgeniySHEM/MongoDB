@@ -133,6 +133,7 @@ db.movies.updateOne({ _id: ObjectId('1') }, { $pull: { genres: "drama" } }) - о
 db.movies.updateOne({ _id: ObjectId('1') }, { $push: { genres: "drama" } }) - обновить фильм с переданным id, в массива "genres" будет добавлен элемент "drama"
 
 db.movies.updateOne({ _id: ObjectId('1') }, { $push: { genres: { $each: ["test1", "test2"] } } }) - обновить фильм с переданным id, в массива "genres" будут добавлены элементы "test1", "test2"
+
 db.users.update ( {username: "smith"}, {$unset: {country: 1}}) - удалить значение с помощью оператора $unset
 
 ---------------------------------------------------------------------------------------------------------------
