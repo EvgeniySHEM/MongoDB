@@ -58,6 +58,8 @@ db.movies.distinct("year") - посмотреть все уникальные д
 
 db.numbers.ensureIndex({num: 1}) - над коллекцией numbers нужно построить индекс по ключу num в порядке возрастания.
 
+db.products.ensureIndex ({slug: 1}, {unique: true})
+
 db.numbers.getIndexes() - просмотр индексов
 
 ------------------------------------
