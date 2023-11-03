@@ -62,6 +62,8 @@ db.products.ensureIndex ({slug: 1}, {unique: true})
 
 db.numbers.getIndexes() - просмотр индексов
 
+db.system.indexes.find() - получить список индексов в базе данных
+
 ------------------------------------
 
 
@@ -105,6 +107,7 @@ db.movies.find({ genres: { $all: ["drama", "crime"] } }) - найти фильм
 
 db.movies.find({ "reviews.name": "Jack" }) - найти фильм с полем "reviews" в котором ИМЯ ревьювера (поле "name") - "Jack"
 
+
 Добавление:
 
 db.movies.insertOne({ name: "Yauhen" }) - добавить один документ в коллекцию "movies"
@@ -118,6 +121,10 @@ db.movies.replaceOne({ id: ObjectId("629249ce4dc394dae55c7489") }, { title: "Ali
 db.movies.find().sort({ rating: -1 }) - сортировать фильмы по убыванию рейтига
 
 db.movies.find().sort({ title: 1 }) - сортировать фильмы по заголовку в алфавитном порядке
+
+db.user.actions.find().sort ({"$natural": -1}); - Чтобы получить их в обратном естественном порядке, следует
+использовать оператор сортировки $natural(для ограниченных коллекций)
+
 
 Ограничение:
 
